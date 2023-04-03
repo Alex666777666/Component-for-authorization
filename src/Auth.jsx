@@ -28,13 +28,7 @@ class Auth extends React.Component {
   onLogout = () => {
     this.setState({
       isLoggedIn: false,
-      isLoading: true,
     })
-    setTimeout(() => {
-      this.setState({
-        isLoading: false,
-      })
-    }, 2000)
   }
 
   render() {
