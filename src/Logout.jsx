@@ -1,26 +1,10 @@
-import React, { useState } from 'react'
-import Spinner from './Spinner.jsx'
+import React from 'react'
 
-const Logout = ({ onLogout }) => {
-  const [isLoading, setIsLoading] = useState(false)
-
-  const handleLogout = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-      onLogout()
-    }, 2000)
-  }
+const Logout = props => {
   return (
-    <>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <button className='btn logout' onClick={handleLogout}>
-          Logout
-        </button>
-      )}
-    </>
+    <button className='btn logout' onClick={props.onLogout}>
+      Logout
+    </button>
   )
 }
 

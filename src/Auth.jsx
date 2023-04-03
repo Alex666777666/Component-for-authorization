@@ -1,7 +1,7 @@
 import React from 'react'
-
 import Login from './Login.jsx'
 import Logout from './Logout.jsx'
+import Spinner from './Spinner.jsx'
 
 class Auth extends React.Component {
   constructor(props) {
@@ -9,31 +9,45 @@ class Auth extends React.Component {
 
     this.state = {
       isLoggedIn: false,
+      isLoading: false,
     }
   }
 
   onLogin = () => {
     this.setState({
       isLoggedIn: true,
+      isLoading: true,
     })
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+      })
+    }, 2000)
   }
 
   onLogout = () => {
     this.setState({
       isLoggedIn: false,
+      isLoading: true,
     })
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+      })
+    }, 2000)
   }
 
   render() {
+    const { isLoggedIn, isLoading } = this.state
     return (
       <div className='panel'>
-        <div>
-          {this.state.isLoggedIn ? (
-            <Logout onLogout={this.onLogout} />
-          ) : (
-            <Login onLogin={this.onLogin} />
-          )}
-        </div>
+        {isLoading ? (
+          <Spinner />
+        ) : isLoggedIn ? (
+          <Logout onLogout={this.onLogout} />
+        ) : (
+          <Login onLogin={this.onLogin} />
+        )}
       </div>
     )
   }

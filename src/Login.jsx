@@ -1,26 +1,10 @@
-import React, { useState } from 'react'
-import Spinner from './Spinner.jsx'
+import React from 'react'
 
-const Login = ({ onLogin }) => {
-  const [isLoading, setIsLoading] = useState(false)
-
-  const handleLogin = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-      onLogin()
-    }, 2000)
-  }
+const Login = props => {
   return (
-    <>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <button className='btn login' onClick={handleLogin}>
-          Login
-        </button>
-      )}
-    </>
+    <button className='btn login' onClick={props.onLogin}>
+      Login
+    </button>
   )
 }
 
